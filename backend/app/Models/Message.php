@@ -12,15 +12,15 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'reciever_id',
+        'receiver_id',
         'sender_id',
         'group_id',
         'message'
     ];
 
-    function reciever(): BelongsTo
+    function receiver(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'reciever_id');
+        return $this->belongsTo(User::class, 'receiver_id');
     }
 
     function sender(): BelongsTo
@@ -33,7 +33,7 @@ class Message extends Model
         return $this->belongsTo(Group::class, 'group_id');
     }
 
-    function attachements(): HasMany
+    function attachments(): HasMany
     {
         return $this->hasMany(MessageAttachment::class);
     }
