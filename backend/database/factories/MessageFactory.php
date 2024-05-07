@@ -34,7 +34,8 @@ class MessageFactory extends Factory
 
         if ($this->faker->boolean(50)) {
             $groups = Group::query();
-            $group = $groups->find($this->faker->randomElement($groups->pluck('id')->toArray()));
+            $random_group_id = $this->faker->randomElement($groups->pluck('id')->toArray());
+            $group = $groups->find($random_group_id);
             $sender_id = $this->faker->randomElement($group->users()->pluck('id')->toArray());
             // a message can be either sent to a group or an individual
             // that why in this case, the receiver_id is null 
